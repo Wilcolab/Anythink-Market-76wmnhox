@@ -18,22 +18,51 @@ The project has the following files and directories:
 
 ## Getting Started
 
-To run the FastAPI server using Docker, follow these steps:
+### Prerequisites
+- Docker and Docker Compose installed, or
+- Node.js 18+ and Python 3.8+ for local development
 
-- Build and start the Docker containers by running the following command:
+### Running with Docker
 
-  ```shell
-  docker compose up
-  ```
+To run both the Node.js and Python servers using Docker, follow these steps:
 
-  This command will build the Docker image for the FastAPI server and start the containers defined in the `docker-compose.yml` file.
+```shell
+docker compose up
+```
 
-- The FastAPI server should now be running. You can access at port `8000`.
+This command will build the Docker images and start all containers defined in the `docker-compose.yml` file.
+
+### Running Locally
+
+**Node.js Server:**
+```shell
+npm install
+npm start
+```
+The Express server will run on `http://localhost:3000`
+
+**Python Server:**
+```shell
+cd python-server
+pip install -r requirements.txt
+python src/main.py
+```
+The FastAPI server will run on `http://localhost:8000`
 
 ## API Routes
 
-The FastAPI server provides the following API routes:
+### Node.js Server (Port 3000)
+
+- `GET /`: Returns a greeting message
+- `GET /tasks`: Retrieves the current task list
+- `POST /tasks`: Adds a new task to the list. Request body should contain:
+  ```json
+  {
+    "task": "Your task description"
+  }
+  ```
+
+### Python Server (Port 8000)
 
 - `POST /tasks`: Adds a task to the task list. The request body should contain the task details.
-
 - `GET /tasks`: Retrieves the task list.
